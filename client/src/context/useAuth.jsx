@@ -67,17 +67,18 @@ const useAuthStore = create()((set) => ({
       const result = await axiosPrivate.post("/auth/register", {
         email,
         password,
-        name,
+        fullname: name,
       });
       if (result.data.message === "success") {
         set({
           loading: false,
         });
+        return 'success';
       }
     } catch (error) {
       set({
         loading: false,
-        error: error || "Registration failed. Please try again.",
+        error: error.response?.data?.errors || "Registration failed. Please try again.",
       });
       console.log("REGISTER ERR:", error);
     } finally {

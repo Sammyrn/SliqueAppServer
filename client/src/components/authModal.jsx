@@ -4,26 +4,26 @@ import { useMatch, useNavigate } from "react-router-dom";
 
 const AuthModal = () => {
   const [authForm, setAuthForm] = useState(true);
-  const { setOpenModal} = useAuthStore()
+  const { setOpenModal } = useAuthStore();
 
   //LOGIN VARIABLES
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, register, loading, error, setError, isAuthenticated } = useAuthStore();
+  const { login, register, loading, error, setError, isAuthenticated } =
+    useAuthStore();
 
   //REGISTER VARIABLES
   const [regEmail, setRegEmail] = useState("");
   const [regName, setRegName] = useState("");
   const [regPassword, setregPassword] = useState("");
-  const navigate = useNavigate()
-  const match = useMatch('/auth')
-
+  const navigate = useNavigate();
+  const match = useMatch("/auth");
 
   useEffect(() => {
     if (isAuthenticated && match !== null) {
-        closeModal()
-      }
-  }, [isAuthenticated])
+      closeModal();
+    }
+  }, [isAuthenticated]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,9 +35,9 @@ const AuthModal = () => {
     try {
       await login(email, password);
 
-      if(match !== null){
-      navigate(-1)
-    }
+      if (match !== null) {
+        navigate(-1);
+      }
     } catch (e) {
       console.log("AUTH ERR:", e);
     }
@@ -47,16 +47,23 @@ const AuthModal = () => {
     e.preventDefault();
     console.log("REGISTERING");
     if (!regEmail || !regPassword || !regName) {
-      return  alert("Please fill in all fields");
+      return alert("Please fill in all fields");
     }
     try {
-      await register(regEmail, regPassword, regName);
+      const result = await register(regEmail, regPassword, regName);
+
+      if (result === "success") {
+        setAuthForm(true);
+      }
+      if (match !== null) {
+        navigate(-1);
+      }
     } catch (e) {
       console.log("AUTH ERR:", e);
     }
   };
 
-// Close modal function
+  // Close modal function
   const closeModal = () => {
     setOpenModal(false);
     setError("");
@@ -66,11 +73,11 @@ const AuthModal = () => {
     setRegName("");
     setregPassword("");
 
-    if(match !== null){
-      navigate(-1)
+    if (match !== null) {
+      navigate(-1);
     }
-  }
- 
+  };
+
   return (
     <div className="bg-green-700">
       {authForm ? (
@@ -80,15 +87,18 @@ const AuthModal = () => {
             <div className="bg-white p-6 rounded shadow-lg w-96 z-50">
               <div className="flex flex-row justify-between items-center">
                 <h2 className="text-xl font-bold mb-4 title">Login</h2>
-                <button onClick={()=>closeModal()} className="cursor-pointer p-2 font-semibold text-xl"  >
+                <button
+                  onClick={() => closeModal()}
+                  className="cursor-pointer p-2 font-semibold text-xl"
+                >
                   <h2>x</h2>
                 </button>
               </div>
               <form>
-                { error.length !== 0 && (
+                {error.length !== 0 && (
                   <div className="p-2 my-2 bg-red-100 rounded">
-                  <p className="text-red-500" >{error}</p>
-                </div>
+                    <p className="text-red-500">{error}</p>
+                  </div>
                 )}
                 <div className="mb-4">
                   <label
@@ -130,7 +140,7 @@ const AuthModal = () => {
                   onClick={handleLogin}
                   disabled={loading}
                 >
-                  {loading ? 'Loading...' : 'Login'}
+                  {loading ? "Loading..." : "Login"}
                 </button>
               </form>
               <p className="py-3">
@@ -152,11 +162,19 @@ const AuthModal = () => {
             <div className="bg-white p-6 rounded shadow-lg w-96 z-50">
               <div className="flex flex-row justify-between items-center">
                 <h2 className="text-xl font-bold mb-4 title">Register</h2>
-                <button className="cursor-pointer p-2">
-                  <h2>X</h2>
+                <button
+                  onClick={() => closeModal()}
+                  className="cursor-pointer p-2 font-semibold text-xl"
+                >
+                  <h2>x</h2>
                 </button>
               </div>
               <form>
+                {error.length !== 0 && (
+                  <div className="p-2 my-2 bg-red-100 rounded">
+                    <p className="text-red-500">{error}</p>
+                  </div>
+                )}
                 <div className="mb-4">
                   <label
                     className="block text-sm font-medium mb-2 label"
