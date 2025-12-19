@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import useAuthStore from "../context/useAuth";
 import useCartStore from "../context/useCartStore";
 import Loading from "../components/loading";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { shippingStates } from "../constants/shippingStates";
 import { axiosPrivate } from "../config/axios";
 
 const Cart = () => {
   const { cart, getShippingPrice, cartLoading, getCartTotal, removeFromCart } =
     useCartStore();
-  const { isAuthenticated, user } = useAuthStore();
-  const { updateCartItem, clearCart } = useCartStore();
+  const { isAuthenticated } = useAuthStore();
+  const { updateCartItem } = useCartStore();
   const navigate = useNavigate();
   const [shipping, setShipping] = useState("Bayelsa");
   const [shippingPrice, setShippingPrice] = useState(1000);

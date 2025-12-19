@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useProductStore from "../context/useProductStore";
 import useCartStore from "../context/useCartStore";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuthStore from "../context/useAuth";
 import ProductCard from "../components/productCard";
 import ReactPaginate from "react-paginate";
-import { axiosPrivate } from "../config/axios";
 
 const Landing = () => {
   const { products, loading } = useProductStore();

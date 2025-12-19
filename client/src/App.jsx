@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProductDetails from "./Pages/productDetails";
-import Landing from "./Pages/Landing";
 import Layout from "./components/Layout";
-import ForbiddenScreen from "./Pages/forbidden";
-import Cart from "./Pages/Cart";
 import PrivateRoute from "./components/privateRoute";
-import Dashboard from "./Pages/Dashboard";
 import AuthModal from "./components/authModal";
 import AdminLayout from "./components/adminLayout";
+import Loading from "./components/loading";
 import useAuthStore from "./context/useAuth";
+import useProductStore from "./context/useProductStore";
+import Cart from "./Pages/Cart";
+import ForbiddenScreen from "./Pages/forbidden";
+import ProductDetails from "./Pages/productDetails";
+import Landing from "./Pages/Landing";
+import Dashboard from "./Pages/Dashboard";
 import AdminProducts from "./Pages/adminProducts";
 import AdminOrders from "./Pages/adminOrders";
 import AddNewProduct from "./Pages/addNewProduct";
-import Loading from "./components/loading";
 import EditProduct from "./Pages/EditProduct";
 import SearchResults from "./Pages/searchResults";
-import useProductStore from "./context/useProductStore";
 import OrderResult from "./Pages/OrderResult";
 
 function App() {
