@@ -14,7 +14,7 @@ import AdminProducts from "./Pages/adminProducts";
 import AdminOrders from "./Pages/adminOrders";
 import AddNewProduct from "./Pages/addNewProduct";
 import Loading from "./components/loading";
-import EditProduct from "./Pages/editproduct";
+import EditProduct from "./Pages/EditProduct";
 import SearchResults from "./Pages/searchResults";
 import useProductStore from "./context/useProductStore";
 import OrderResult from "./Pages/OrderResult";

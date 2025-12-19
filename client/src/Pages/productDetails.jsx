@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Axios from "../config/axios";
 import Loading from "../components/loading";
 import useProductStore from "../context/useProductStore";
 import useCartStore from "../context/useCartStore";

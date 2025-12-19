@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthModal from "./authModal";
 import { Icon } from "../assets/Icon";
 import { io } from "socket.io-client";
-import axios from "axios";
 
 const Layout = ({ heroText, children }) => {
   const { isAuthenticated, openModal, setOpenModal } = useAuthStore();
@@ -176,14 +175,14 @@ const Layout = ({ heroText, children }) => {
             <h3 className="text-xl font-bold">About Us</h3>
             <ul className="">
               <li className="title text-lg">SliQue</li>
-              <li className="">+234-789-222-31</li>
+              <li className="">+234-814-5406-881</li>
               <li className="">Affiliates</li>
-              <li className="">No 24. Tnama Rd Beside Plaza</li>
+              <li className="">Yenagoa, Bayelsa State</li>
             </ul>
           </div>
 
           <div className="flex-2">
-{/*             
+            {/*             
             <div className="">
               <h3 className="text-lg">Subscribe to our newsletter</h3>
               <div className="">
@@ -201,9 +200,29 @@ const Layout = ({ heroText, children }) => {
             <div className="footerRightMenu">
               <h3 className="fMenuTitle mb-3">Follow Us</h3>
               <div className="fIcons flex flex-row gap-5">
-                <Icon name={'whatsapp'} />
-                <Icon name={'instagram'} />
+                <a
+                  href="https://www.instagram.com/Slique.ng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={"instagram"} />
+                </a>
 
+                <a
+                  href="https://www.tiktok.com/@Slique.ng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={"tiktok"} />
+                </a>
+
+                <a
+                  href="https://wa.me/2348145406881"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name={"whatsapp"} />
+                </a>
               </div>
             </div>
           </div>
